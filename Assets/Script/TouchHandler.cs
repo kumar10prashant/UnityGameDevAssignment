@@ -109,8 +109,7 @@ public class TouchHandler : MonoBehaviour
             tiles.previousRow = (int)tiles.transform.position.x;
             tiles.previousColumn = (int)tiles.transform.position.z;
             levelGenerator.TilesPoint[tiles.previousRow, tiles.previousColumn] = tiles.gameObject;
-            Debug.Log(levelGenerator.TilesPoint[tiles.previousRow, tiles.previousColumn]);
-            Debug.Log(tiles.previousRow +","+ tiles.previousColumn);
+           
         }
     }
 
