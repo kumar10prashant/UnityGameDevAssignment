@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
@@ -11,19 +12,24 @@ public class LevelGenerator : MonoBehaviour
 
     public GameObject[,] TilesPoint;
 
+    public List<Transform> finalPoints;
+    [HideInInspector]public int totalFillPoints;
+    public int currentFillPoints;
+
     private void Start()
     {
-
+        totalFillPoints = finalPoints.Count;
         TilesPoint = new GameObject[row, col];
-        TileHandler[] tilesHandler = GameObject.FindObjectsOfType<TileHandler>();
+        TileHandler[] tilesHandler = FindObjectsOfType<TileHandler>();
         foreach(TileHandler tileHandler in tilesHandler)
         {
             TilesPoint[tileHandler.previousRow, tileHandler.previousColumn] = tileHandler.gameObject;
            
         }
-        GenerateLevel();
+        //GenerateLevel();
        
     }
+    [ContextMenu("GenerateLevel")]
     private void GenerateLevel()
     {
         for (int i = 0; i < row; i++)

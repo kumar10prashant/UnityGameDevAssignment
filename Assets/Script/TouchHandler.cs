@@ -18,9 +18,12 @@ public class TouchHandler : MonoBehaviour
     [SerializeField] LevelGenerator levelGenerator;
 
     Tiles selectedTiles;
+
+    TilesMatching[] matching;
     private void Start()
     {
         playerCam = Camera.main;
+        matching = FindObjectsOfType<TilesMatching>();
     }
 
     private void Update()
@@ -110,6 +113,11 @@ public class TouchHandler : MonoBehaviour
             tiles.previousColumn = (int)tiles.transform.position.z;
             levelGenerator.TilesPoint[tiles.previousRow, tiles.previousColumn] = tiles.gameObject;
            
+        }
+        foreach(var matchtile in matching)
+        {
+
+            matchtile.MatchTiles();
         }
     }
 
